@@ -1,5 +1,6 @@
 package com.mavericapps.projectms.service;
 
+import com.mavericapps.customerms.exceptions.InvalidCustomerId;
 import com.mavericapps.customerms.exceptions.NoEmployeesRegisteredException;
 import com.mavericapps.projectms.domain.Employee;
 import com.mavericapps.projectms.domain.Project;
@@ -19,30 +20,27 @@ public class ProjectService implements IProjectService {
         this.employeeService=service;
     }
     @Override
-    public Project addProject(String projectName, Collection<String> technologies) throws projectNameNullException {
+    public Project addProject(String projectName, Collection<String> technologies) throws ProjectNameNullException {
+        validateString(projectName);
         Project resProject;
-        if(projectName.isBlank())
-            throw new projectNameNullException("EXCEPTION!!! Project name cannot be null!");
         int projId=getGeneratedProjectId();
         resProject = new Project(projId,projectName, (List<String>) technologies);
         projectMap.put(projId,resProject);
         return resProject;
     }
     @Override
-    public Project findProjectById(int pid) throws InvalidProjectIdException {
-        if(pid<=0)
-            throw new InvalidProjectIdException("EXCEPTION!!! Invalid Project Id");
-        for(Map.Entry<Integer, Project> entry:projectMap.entrySet())
-        {
-            int projectId = entry.getKey();
-            if(projectId==pid)
-                return entry.getValue();
-        }
-        return null;
+    public Project findProjectById(int pid) throws InvalidProjectIdException, ProjectNotFoundException {
+        validateProjectId(pid);
+        Project proj = null;
+        proj = projectMap.get(pid);
+        if(proj == null)
+            throw new ProjectNotFoundException("Project with id "+pid+ " not found" );
+        return proj;
     }
     @Override
     public void assignProject(int projectId, int employeeId) throws InvalidEmployeeIdException, InvalidProjectIdException, EmployeeNotFoundException, ProjectNotFoundException {
-
+        validateProjectId(projectId);
+        validateEmployeeId(employeeId);
         Employee emp = employeeService.findEmployeeById(employeeId);
         if (emp==null)
             throw new EmployeeNotFoundException("Employee with id "+employeeId+" not found");
@@ -54,7 +52,8 @@ public class ProjectService implements IProjectService {
         emp.setProjectsWorkingOn(projectsWorkingOn);
     }
     @Override
-    public List<Employee> findEmployeesWorkingOnProjectInAscFirstName(int projectId) throws InvalidProjectIdException, NoEmployeesRegisteredException {
+    public List<Employee> findEmployeesWorkingOnProjectInAscFirstName(int projectId) throws InvalidProjectIdException, NoEmployeesRegisteredException, ProjectNotFoundException {
+        validateProjectId(projectId);
         Project project = findProjectById(projectId);
         List<Employee> employeesInProject = new ArrayList<>();
         for(Employee emp:employeeService.getEmployees())
@@ -70,5 +69,18 @@ public class ProjectService implements IProjectService {
     private int getGeneratedProjectId()
     {
         return ++generatedProjectId;
+    }
+
+    private void validateString(String str) throws ProjectNameNullException {
+        if(str==null) throw new ProjectNameNullException("Project Name cannot be null");
+        if(str.isBlank()||str.isEmpty()) throw new ProjectNameNullException("Project name cannot be empty");
+    }
+
+    private void validateEmployeeId(int id) throws InvalidEmployeeIdException {
+        if(id<1) throw new InvalidEmployeeIdException("Invalid employee id");
+    }
+
+    private void validateProjectId(int id) throws InvalidProjectIdException {
+        if(id<1) throw new InvalidProjectIdException("Invalid project id");
     }
 }

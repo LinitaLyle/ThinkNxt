@@ -9,9 +9,9 @@ import java.util.Collection;
 import java.util.List;
 
 public interface IProjectService {
-    public Project addProject(String projectName, Collection<String> technologies) throws projectNameNullException ;
-    public Project findProjectById(int pid) throws InvalidProjectIdException;
+    public Project addProject(String projectName, Collection<String> technologies) throws ProjectNameNullException;
+    public Project findProjectById(int pid) throws InvalidProjectIdException, ProjectNotFoundException;
     public void assignProject(int projectId, int employeeId) throws InvalidEmployeeIdException, InvalidProjectIdException, EmployeeNotFoundException, ProjectNotFoundException;
-    public List<Employee> findEmployeesWorkingOnProjectInAscFirstName(int projectId) throws InvalidProjectIdException, NoEmployeesRegisteredException;
+    public List<Employee> findEmployeesWorkingOnProjectInAscFirstName(int projectId) throws InvalidProjectIdException, NoEmployeesRegisteredException, ProjectNotFoundException;
 
 }

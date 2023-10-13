@@ -1,5 +1,6 @@
 package com.mavericapps.projectms.ui;
 
+import com.mavericapps.customerms.exceptions.InvalidNameException;
 import com.mavericapps.customerms.exceptions.NoEmployeesRegisteredException;
 import com.mavericapps.projectms.domain.Employee;
 import com.mavericapps.projectms.domain.Project;
@@ -23,6 +24,7 @@ public class AppClient {
     public void runApp()
     {
         //Register an Employee
+        System.out.println("\n**********Register Employees**********");
         registerEmployee("Sarah","Jones");
         registerEmployee("Adam","Brown");
         registerEmployee("Linita","Lyle");
@@ -91,7 +93,11 @@ public class AppClient {
 
     public void registerEmployee(String firstName, String lastName)
     {
-        empService.registerEmployee(firstName,lastName);
+        try {
+            empService.registerEmployee(firstName,lastName);
+        } catch (InvalidNameException e) {
+            System.out.println(e.getMessage());
+        }
     }
     public void findEmployeebyId(int empId)
     {
@@ -114,7 +120,7 @@ public class AppClient {
                 System.out.println("Project "+projectName+" not found!");
             else
                 System.out.println("Project added: "+project);
-        } catch (projectNameNullException e) {
+        } catch (ProjectNameNullException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -129,6 +135,8 @@ public class AppClient {
                 System.out.println("Project details: "+resObj);
         } catch (InvalidProjectIdException e) {
             System.out.println(e.getMessage());
+        } catch (ProjectNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -136,6 +144,7 @@ public class AppClient {
 
         try {
             projectService.assignProject(projId, empId);
+            System.out.println("Assigned project "+projId+" to employee "+empId);
         } catch (InvalidEmployeeIdException e) {
             System.out.println(e.getMessage());
         } catch (InvalidProjectIdException e) {
@@ -159,6 +168,8 @@ public class AppClient {
         } catch (InvalidProjectIdException e) {
             System.out.println(e.getMessage());
         } catch (NoEmployeesRegisteredException e) {
+            System.out.println(e.getMessage());
+        } catch (ProjectNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }

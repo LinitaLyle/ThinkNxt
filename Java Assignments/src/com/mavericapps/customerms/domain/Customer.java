@@ -1,9 +1,9 @@
 package com.mavericapps.customerms.domain;
 
 public class Customer implements Comparable<Customer> {
-    Integer id;
-    String firstName;
-    String lastName;
+    private Integer id;
+    private String firstName;
+    private String lastName;
 
     public Customer(Integer id, String firstName, String lastName) {
         this.id = id;
@@ -21,7 +21,7 @@ public class Customer implements Comparable<Customer> {
 
     @Override
     public int compareTo(Customer custObj) {
-        return this.id-custObj.getId();
+        return this.id - custObj.getId();
     }
 
     @Override

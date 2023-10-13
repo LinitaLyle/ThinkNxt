@@ -43,7 +43,7 @@ public class Employee implements Comparable<Employee> {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", projectsWorkingOn=" + projectsWorkingOn +
-                '}'+'\n';
+                '}' + '\n';
     }
 
     @Override

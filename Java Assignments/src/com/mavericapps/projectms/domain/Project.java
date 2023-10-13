@@ -3,7 +3,7 @@ package com.mavericapps.projectms.domain;
 import java.util.List;
 
 public class Project {
-    int id;
+    private int id;
     private final String name;
     private List<String> technologiesUsed;
 
