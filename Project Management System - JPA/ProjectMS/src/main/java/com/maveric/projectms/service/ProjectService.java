@@ -7,6 +7,8 @@ import com.maveric.projectms.exception.InvalidIdException;
 import com.maveric.projectms.exception.InvalidEmpNameException;
 import com.maveric.projectms.exception.NoEmployeeFoundException;
 import com.maveric.projectms.exception.ProjectNotFoundException;
+import com.maveric.projectms.utilities.Utility;
+import jdk.jshell.execution.Util;
 
 import java.util.*;
 
@@ -15,6 +17,8 @@ public class ProjectService implements IProjectService {
     private final ProjectDAO projDAO;
     private final EmployeeService empSer;
 
+    private Utility util = new Utility();
+
     public ProjectService(EmployeeService empSer) {
         this.projDAO = new ProjectDAO();
         this.empSer = empSer;
@@ -22,7 +26,7 @@ public class ProjectService implements IProjectService {
 
     @Override
     public Project addProject(String projectName, Collection<String> technologies) throws InvalidEmpNameException {
-        validateString(projectName, 2, 10, "Invalid project name");
+        util.validateString(projectName, 2, 10, "Invalid project name");
         Set<String> techStack = new HashSet<>(technologies);
         Project projObj = new Project(projectName, techStack);
         projDAO.save(projObj);
@@ -31,7 +35,7 @@ public class ProjectService implements IProjectService {
 
     @Override
     public Project findProjectById(long pId) throws InvalidIdException, ProjectNotFoundException {
-        validateId(pId, "Invalid project id");
+        util.validateId(pId, "Invalid project id");
         Optional<Project> proj = projDAO.findProjectById(pId);
         if (proj.isPresent()) return proj.get();
         throw new ProjectNotFoundException("Project with id " + pId + " not found!!");
@@ -39,26 +43,17 @@ public class ProjectService implements IProjectService {
 
     @Override
     public void assignProject(long projectId, long employeeId) throws InvalidIdException, ProjectNotFoundException, NoEmployeeFoundException {
-        validateId(projectId, "Invalid project Id");
-        validateId(employeeId, "Invalid employee Id");
+        util.validateId(projectId, "Invalid project Id");
+        util.validateId(employeeId, "Invalid employee Id");
         Project proj = findProjectById(projectId);
         Employee emp = empSer.findEmployeeById(employeeId);
         List<Employee> projEmployees = proj.getMembers();
-        projEmployees.add(emp);
+        if(projEmployees==null)
+            projEmployees = new ArrayList<>();
+        else
+            projEmployees.add(emp);
         proj.setMembers(projEmployees);
-        emp.setProjectWorkingOn(proj);
-    }
-
-    private void validateString(String str, int minLen, int maxLen, String msg) throws InvalidEmpNameException {
-        if (str == null || str.isEmpty()) throw new InvalidEmpNameException(msg);
-        int strLen = str.length();
-        if (strLen < minLen || strLen > maxLen) throw new InvalidEmpNameException(msg);
-        for (int i = 0; i < strLen; i++)
-            if (!Character.isLetter(str.charAt(i))) throw new InvalidEmpNameException(msg);
-    }
-
-    private void validateId(long id, String msg) throws InvalidIdException {
-        if (id <= 0) throw new InvalidIdException(msg);
+        projDAO.merge(proj, emp);
     }
 
 

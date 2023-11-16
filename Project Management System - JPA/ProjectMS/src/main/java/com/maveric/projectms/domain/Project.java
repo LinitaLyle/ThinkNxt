@@ -9,10 +9,12 @@ import java.util.*;
 public class Project {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="project_id")
     private long id;
-    @Column(nullable = false)
+    @Column(name="project_name",nullable = false)
     private String name;
     @OneToMany(mappedBy = "projectWorkingOn")
+    //@Column(name="project_members")
     private List<Employee> members;
     @ElementCollection
     private Set<String> technologies;
@@ -22,6 +24,8 @@ public class Project {
         this.technologies = technologies;
         this.members = new ArrayList<>();
     }
+
+    public Project(){}
 
     public long getId() {
         return id;

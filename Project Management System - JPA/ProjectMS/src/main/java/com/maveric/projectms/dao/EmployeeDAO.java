@@ -1,6 +1,6 @@
 package com.maveric.projectms.dao;
 
-import com.maveric.projectms.utilities.Util;
+import com.maveric.projectms.utilities.Utility;
 import com.maveric.projectms.domain.Employee;
 import jakarta.persistence.*;
 
@@ -13,7 +13,7 @@ public class EmployeeDAO implements IEmployeeDAO {
     private EntityManager entityManager;
 
     public EmployeeDAO() {
-        EntityManagerFactory emf = Util.getEntityManagerFactory();
+        EntityManagerFactory emf = Utility.getEntityManagerFactory();
         entityManager = emf.createEntityManager();
     }
 

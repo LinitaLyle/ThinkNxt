@@ -77,14 +77,16 @@ public class AppClient {
         addProject(projectName4, techStack1); // throws exception
 
         System.out.println("\n--------Find Project by Id----------");
-        findProjectById(1001);
+        findProjectById(1);
         findProjectById(-1); //throws invalid proj id exception
-        findProjectById(10021); //throws project not found exception
+        findProjectById(21); //throws project not found exception
 
         System.out.println("\n--------Assign Project to Employee----------");
-        assignProject(1001,1);
-        assignProject(1002,2);
-        assignProject(1003,3);
+        assignProject(3,1);
+       assignProject(1,2);
+      assignProject(2,3);
+       assignProject(1,4);
+      assignProject(1,5);
    }
 
     private void assignProject(long projId, long empId) {
@@ -142,9 +144,8 @@ public class AppClient {
             emp = empServ.findEmployeeById(id);
             System.out.println("Employee found! - "+emp);
         } catch (InvalidIdException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (NoEmployeeFoundException e) {
-            e.printStackTrace();
             System.out.println(e.getMessage());
         }
 

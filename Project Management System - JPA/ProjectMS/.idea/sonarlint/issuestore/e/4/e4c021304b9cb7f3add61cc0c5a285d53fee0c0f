@@ -1,0 +1,9 @@
+
+|
+java:S1488"_Immediately return this expression instead of assigning it to the temporary variable "resProj".(¦ëµ…8Ù…Ş»½1
+\
+java:S1117$"?Rename "transaction" which hides the field declared at line 15.(Ò©ıÀ8ä…Ş»½1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ìÔã»½1
+M
+java:S1128	"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ìÔã»½1

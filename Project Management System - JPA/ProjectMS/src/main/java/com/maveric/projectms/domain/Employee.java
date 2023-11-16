@@ -6,21 +6,23 @@ import java.util.Objects;
 @Table(name="JPA_Employee")
 @Entity
 public class Employee implements Comparable<Employee> {
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="employee_id")
     private long id;
-    @Column(nullable = false)
+    @Column(name="first_name",nullable = false)
     private String firstName;
-    @Column(nullable = false)
+    @Column(name="last_name",nullable = false)
     private String lastName;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "project_working_on")
     private Project projectWorkingOn;
 
     public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
+    public Employee(){}
     public void setProjectWorkingOn(Project projectWorkingOn) {
         this.projectWorkingOn = projectWorkingOn;
     }
