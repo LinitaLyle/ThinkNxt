@@ -1,0 +1,16 @@
+
+G	java:S106"+Replace this use of System.out by a logger.(°ª†Ã8»©àß½1
+G	java:S106("+Replace this use of System.out by a logger.(í‘½¯8¼©àß½1
+L	java:S106-"+Replace this use of System.out by a logger.(ŞÍüÿÿÿÿ8¼©àß½1
+G	java:S1067"+Replace this use of System.out by a logger.(ò½ë±8½©àß½1
+]	java:S1255"<This block of commented-out lines of code should be removed.(—§øşøÿÿÿÿ8½©àß½1
+K
+java:S1481A")Remove this unused "cust" local variable.(ŸˆÄÁıÿÿÿÿ8À©àß½1
+f
+java:S2147G"DCombine this catch with the one at line 69, which has the same body.(Å¢äùÿÿÿÿ8àÅúß½1
+G	java:S106D"+Replace this use of System.out by a logger.(ÇÜÓµ8Á©àß½1
+L	java:S106Q"+Replace this use of System.out by a logger.(É˜Í·ûÿÿÿÿ8Â©àß½1
+L	java:S106\"+Replace this use of System.out by a logger.(Àó¯Çùÿÿÿÿ8Ã©àß½1
+g
+java:S2147i"ECombine this catch with the one at line 103, which has the same body.(›¸«‘ùÿÿÿÿ8¹êîß½1
+G	java:S106f"+Replace this use of System.out by a logger.(áê›Í8Å©àß½1
