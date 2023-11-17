@@ -1,0 +1,49 @@
+
+l
+java:S1104"VMake empService a static final constant or non-public and provide accessors if needed.(Œ¯ò­
+p
+java:S1104"ZMake projectService a static final constant or non-public and provide accessors if needed.(Úî”ù
+E	java:S106"+Replace this use of System.out by a logger.(ÁºÉæúÿÿÿÿ
+@	java:S106$"+Replace this use of System.out by a logger.(íøş­
+E	java:S106)"+Replace this use of System.out by a logger.(‰ç“ôùÿÿÿÿ
+@	java:S106,"+Replace this use of System.out by a logger.(«ó§¤
+E	java:S106>"+Replace this use of System.out by a logger.(Ã‹“¤ıÿÿÿÿ
+@	java:S106C"+Replace this use of System.out by a logger.(„‹Œ
+@	java:S106N"+Replace this use of System.out by a logger.(Ó‰ë
+E	java:S106X"+Replace this use of System.out by a logger.(•·ûõûÿÿÿÿ
+E	java:S106Z"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+E	java:S106c"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+E	java:S106k"+Replace this use of System.out by a logger.(¤ª‚öûÿÿÿÿ
+E	java:S106m"+Replace this use of System.out by a logger.(¸Û‘áşÿÿÿÿ
+E	java:S106o"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+E	java:S106x"+Replace this use of System.out by a logger.(„¢®Ÿÿÿÿÿÿ
+@	java:S106z"+Replace this use of System.out by a logger.(ë¢
+E	java:S106|"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+\
+java:S2147Š"ECombine this catch with the one at line 136, which has the same body.(ìÕäş
+F	java:S106…"+Replace this use of System.out by a logger.(Ù¤õäùÿÿÿÿ
+@	java:S106‡"+Replace this use of System.out by a logger.(Œ‰
+F	java:S106‰"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+F	java:S106‹"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+\
+java:S2147–"ECombine this catch with the one at line 148, which has the same body.(¹õŞå
+\
+java:S2147˜"ECombine this catch with the one at line 150, which has the same body.(§„½­
+\
+java:S2147š"ECombine this catch with the one at line 152, which has the same body.(ìÕäş
+A	java:S106“"+Replace this use of System.out by a logger.(óŸ’Ã
+F	java:S106•"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+F	java:S106—"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+F	java:S106™"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+F	java:S106›"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+a
+java:S2147ª"ECombine this catch with the one at line 168, which has the same body.(èõ¿¸úÿÿÿÿ
+\
+java:S2147¬"ECombine this catch with the one at line 170, which has the same body.(ìÕäş
+F	java:S106¤"+Replace this use of System.out by a logger.(İõß¾şÿÿÿÿ
+F	java:S106¦"+Replace this use of System.out by a logger.(«İºóûÿÿÿÿ
+F	java:S106©"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+F	java:S106«"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+F	java:S106­"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
+F	java:S106´"+Replace this use of System.out by a logger.(ÈÆ¿üÿÿÿÿ
+F	java:S106¶"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ
